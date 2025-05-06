@@ -2,7 +2,6 @@ import Mixin from '@ember/object/mixin';
 import { computed, get, set } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { on } from '@ember/object/evented';
-import { capitalize } from '@ember/string';
 import { isEmpty, isBlank, isPresent, typeOf, isEqual } from '@ember/utils';
 import { A, isArray } from '@ember/array';
 
@@ -13,6 +12,11 @@ import MessagesAr from '../messages/ar';
 import MessagesFr from '../messages/fr';
 import MessagesEs from '../messages/es';
 import MessagesPtbr from '../messages/pt-br';
+
+function capitalize(str) {
+   if (typeof str !== 'string' || !str.length) return '';
+   return str.charAt(0).toUpperCase() + str.slice(1);
+ }
 
 const Messages = {
   en: MessagesEn,
